@@ -34,6 +34,9 @@ def cadastro(request):
             return redirect('/usuarios/cadastro')
 
 def logar(request):
+    if request.user.is_authenticated:
+        return redirect('/flashcard/novo_flashcard/')
+    
     if request.method == 'GET':
         print(request.user)
         return render(request, 'login.html')
